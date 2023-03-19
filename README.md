@@ -17,8 +17,8 @@ void update(double DeltaTime) {
 }
 
 int main(int argc, const char * argv[]) {
-  // Creates a 1280x720 window at 60 FPS
+	// Creates a 1280x720 window at 60 FPS
 	NeonRun("Example Neon program", 0, 0, 1280, 720, draw, update, 60);
-    return 0;
+	return 0;
 }
 ```
