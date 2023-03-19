@@ -3,11 +3,46 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 53;
 	objects = {
+
+/* Begin PBXBuildFile section */
+		FCC4E3DD29C67D3600952E75 /* Neon.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC4E3DA29C67D3600952E75 /* Neon.m */; };
+		FCC4E3DE29C67D3600952E75 /* Neon.c in Sources */ = {isa = PBXBuildFile; fileRef = FCC4E3DB29C67D3600952E75 /* Neon.c */; };
+		FCC4E3E829C680D000952E75 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = FCC4E3E729C680D000952E75 /* main.c */; };
+		FCC4E3ED29C6818800952E75 /* libNeon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC4E3D129C67D1A00952E75 /* libNeon.a */; };
+		FCC4E3F029C6829600952E75 /* Neon.h in Headers */ = {isa = PBXBuildFile; fileRef = FCC4E3D829C67D3600952E75 /* Neon.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FCC4E3EE29C6818800952E75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCC4E3C929C67D1A00952E75 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCC4E3D029C67D1A00952E75;
+			remoteInfo = Neon;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FCC4E3E329C680D000952E75 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		FCC4E3D129C67D1A00952E75 /* libNeon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNeon.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCC4E3D829C67D3600952E75 /* Neon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Neon.h; sourceTree = "<group>"; };
+		FCC4E3DA29C67D3600952E75 /* Neon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Neon.m; sourceTree = "<group>"; };
+		FCC4E3DB29C67D3600952E75 /* Neon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Neon.c; sourceTree = "<group>"; };
+		FCC4E3E529C680D000952E75 /* Example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Example; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCC4E3E729C680D000952E75 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -18,22 +53,76 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FCC4E3E229C680D000952E75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCC4E3ED29C6818800952E75 /* libNeon.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		FCC4E3C829C67D1A00952E75 = {
 			isa = PBXGroup;
 			children = (
+				FCC4E3E029C67D4900952E75 /* src */,
+				FCC4E3DF29C67D3F00952E75 /* include */,
+				FCC4E3E629C680D000952E75 /* Example */,
 				FCC4E3D229C67D1A00952E75 /* Products */,
+				FCC4E3EC29C6818800952E75 /* Frameworks */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		FCC4E3D229C67D1A00952E75 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				FCC4E3D129C67D1A00952E75 /* libNeon.a */,
+				FCC4E3E529C680D000952E75 /* Example */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		FCC4E3D929C67D3600952E75 /* mac */ = {
+			isa = PBXGroup;
+			children = (
+				FCC4E3DA29C67D3600952E75 /* Neon.m */,
+			);
+			path = mac;
+			sourceTree = "<group>";
+		};
+		FCC4E3DF29C67D3F00952E75 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				FCC4E3D829C67D3600952E75 /* Neon.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		FCC4E3E029C67D4900952E75 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				FCC4E3DB29C67D3600952E75 /* Neon.c */,
+				FCC4E3D929C67D3600952E75 /* mac */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		FCC4E3E629C680D000952E75 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				FCC4E3E729C680D000952E75 /* main.c */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		FCC4E3EC29C6818800952E75 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -43,6 +132,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCC4E3F029C6829600952E75 /* Neon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +156,24 @@
 			productReference = FCC4E3D129C67D1A00952E75 /* libNeon.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		FCC4E3E429C680D000952E75 /* Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCC4E3EB29C680D000952E75 /* Build configuration list for PBXNativeTarget "Example" */;
+			buildPhases = (
+				FCC4E3E129C680D000952E75 /* Sources */,
+				FCC4E3E229C680D000952E75 /* Frameworks */,
+				FCC4E3E329C680D000952E75 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FCC4E3EF29C6818800952E75 /* PBXTargetDependency */,
+			);
+			name = Example;
+			productName = Example;
+			productReference = FCC4E3E529C680D000952E75 /* Example */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -78,10 +186,13 @@
 					FCC4E3D029C67D1A00952E75 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
+					FCC4E3E429C680D000952E75 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 				};
 			};
 			buildConfigurationList = FCC4E3CC29C67D1A00952E75 /* Build configuration list for PBXProject "Neon" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -94,6 +205,7 @@
 			projectRoot = "";
 			targets = (
 				FCC4E3D029C67D1A00952E75 /* Neon */,
+				FCC4E3E429C680D000952E75 /* Example */,
 			);
 		};
 /* End PBXProject section */
@@ -103,10 +215,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCC4E3DE29C67D3600952E75 /* Neon.c in Sources */,
+				FCC4E3DD29C67D3600952E75 /* Neon.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCC4E3E129C680D000952E75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCC4E3E829C680D000952E75 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FCC4E3EF29C6818800952E75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FCC4E3D029C67D1A00952E75 /* Neon */;
+			targetProxy = FCC4E3EE29C6818800952E75 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		FCC4E3D329C67D1A00952E75 /* Debug */ = {
@@ -238,6 +368,22 @@
 			};
 			name = Release;
 		};
+		FCC4E3E929C680D000952E75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FCC4E3EA29C680D000952E75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -255,6 +401,15 @@
 			buildConfigurations = (
 				FCC4E3D629C67D1A00952E75 /* Debug */,
 				FCC4E3D729C67D1A00952E75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FCC4E3EB29C680D000952E75 /* Build configuration list for PBXNativeTarget "Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCC4E3E929C680D000952E75 /* Debug */,
+				FCC4E3EA29C680D000952E75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
