@@ -8,14 +8,18 @@
 #ifndef Neon_h
 #define Neon_h
 
+// if someone has their own calloc for garbage collection or something, just define this macro
+#ifndef NEON_NOINCLUDE
 #include <stdlib.h>
 #define NeonCreateDraw() calloc(1, sizeof(NeonDraw))
+#endif
 
 #define NeonColor(r, g, b, a) (unsigned char []){r, g, b, a}
 
 // Draw instruction IDs
 // 1 - Rectangle
 // 2 - Image
+// 3 - Polygon
 
 typedef struct {
     unsigned int ID;
@@ -24,13 +28,19 @@ typedef struct {
 		struct {
 			int x, y, width, height;
 			unsigned char color[4];
-			_Bool filled;
 		} RectParameters;
 		
 		struct {
 			int x, y, width, height;
 			unsigned long id;
 		} ImageParameters;
+		
+		struct {
+			unsigned int vertices;
+			int* x;
+			int* y;
+			unsigned char color[4];
+		} PolygonParameters;
 	};
 } NeonDrawInstruction;
 
@@ -52,6 +62,9 @@ void NeonAddImageRaw(unsigned char* bytes, unsigned long len);
 
 /// Adds an image to a draw
 void NeonDrawImage(NeonDraw* draw, int x, int y, int width, int height, unsigned long ID);
+
+/// Adds a polygon to a draw
+void NeonDrawPolygon(NeonDraw* draw, unsigned char color[4], unsigned int verticies, ...);
 // /Rendering
 
 // Audio
