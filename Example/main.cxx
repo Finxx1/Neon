@@ -246,6 +246,6 @@ NeonDraw* draw(void) {
 }
 
 int main(int argc, const char* argv[]) {
-	NeonRun((char*)"Forever and Ever You Shall Slaughter", 0, 0, 960, 720, draw, update, 60);
+	NeonRun((char*)"Forever and Ever You Shall Slaughter", 100, 100, 960, 720, draw, update, 60);
 	return 0;
 }

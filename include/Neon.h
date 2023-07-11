@@ -21,7 +21,7 @@ typedef bool _Bool;
 #endif
 extern "C" {
 #ifndef NEON_NOINCLUDE
-	unsigned char* NeonColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { unsigned char* foo = (unsigned char*)malloc(4); foo[0] = r; foo[1] = g; foo[2] = b; foo[3] = a; return foo; }
+	static inline unsigned char* NeonColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { unsigned char* foo = (unsigned char*)malloc(4); foo[0] = r; foo[1] = g; foo[2] = b; foo[3] = a; return foo; }
 #endif
 #else
 #define NeonColor(r, g, b, a) (unsigned char []){r, g, b, a}

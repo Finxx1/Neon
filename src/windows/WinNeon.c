@@ -3,6 +3,8 @@
 #include <Neon.h>
 #include <Windows.h>
 
+#include <Windowsx.h>
+
 #define GLEW_STATIC
 #include <GL/glew.h>
 
@@ -94,13 +96,15 @@ short* NeonMouseY(void) {
     return &my;
 }
 
+double mxr, myr; // mouse x/y ratio
+
 LRESULT dostuff(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) {
     char foo[256];
     POINT p;
     GetCursorPos(&p);
     ScreenToClient(hWnd, &p);
-    mx = p.x;
-    my = p.y;
+    mx = p.x * mxr;
+    my = p.y * myr;
     if (!GetKeyboardState(&foo[0])) Panic(L"Failed to get keyboard state.");
     memset(___keys, 0, 256 * sizeof(_Bool));
     memset(___keysdown, 0, 256 * sizeof(_Bool));
@@ -205,6 +209,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) {
         }
 
         case WM_CREATE: {
+            // adjust client size
+            RECT bar;
+            GetWindowRect(hWnd, &bar);
+            bar.right = bar.left + w;
+            bar.bottom = bar.top + h;
+            AdjustWindowRect(&bar, (WS_OVERLAPPEDWINDOW | WS_VISIBLE), FALSE);
+
+            RECT aaaa;
+            GetClientRect(hWnd, &aaaa);
+
+            mxr = (double)w / (double)aaaa.right;
+            myr = (double)h / (double)aaaa.bottom;
+
             SetTimer(hWnd, 2763, 1000 / fps, dostuff);
 
             dc = GetDC(hWnd);
@@ -220,15 +237,33 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) {
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             glEnable(GL_TEXTURE_2D);
 
-            POINT p;
-            GetCursorPos(&p);
-            ScreenToClient(hWnd, &p);
-            mx = p.x;
-            my = p.y;
-            GetKeyboardState(___keys);
-            GetKeyboardState(___keysdown);
+            mx = 0;
+            my = 0;
+            unsigned char foo[256];
+            if (!GetKeyboardState(&foo[0])) Panic(L"Failed to get keyboard state.");
+            memset(___keys, 0, 256 * sizeof(_Bool));
+            memset(___keysdown, 0, 256 * sizeof(_Bool));
+            memset(___keysup, 0, 256 * sizeof(_Bool));
+            for (int i = 0; i < 256; i++) {
+                if (foo[i] < 0) {
+                    ___keys[i] = 1;
+                    ___keysdown[i] = 1;
+                }
+            }
 
             _updateFunc(0);
+
+            break;
+        }
+        
+        case WM_MOUSEMOVE: {
+            mx = GET_X_LPARAM(lParam);
+            my = GET_Y_LPARAM(lParam);
+            break;
+        }
+                       
+        case WM_SIZE: {
+            glViewport(0, 0, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
 
             break;
         }
@@ -326,7 +361,7 @@ void NeonRun(char* name, int x, int y, int width, int height, NeonDraw* (drawFun
     _DrawFunc = drawFunc;
     _updateFunc = updateFunc;
 
-    hwnd = CreateWindowW(L"neonforwindows", UTF8toWchar(name), (WS_OVERLAPPEDWINDOW | WS_VISIBLE) & ~WS_MAXIMIZEBOX & ~WS_THICKFRAME, x, y, width, height, NULL, NULL, NULL, 0);
+    hwnd = CreateWindowW(L"neonforwindows", UTF8toWchar(name), (WS_OVERLAPPEDWINDOW | WS_VISIBLE), x, y, width, height, NULL, NULL, NULL, 0);
 
     MSG msg;
     while (GetMessageW(&msg, NULL, 0, 0)) {
