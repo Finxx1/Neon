@@ -14,7 +14,18 @@
 #define NeonCreateDraw() calloc(1, sizeof(NeonDraw))
 #endif
 
+// c++ is weird
+#ifdef __cplusplus
+#ifndef _WIN32
+typedef bool _Bool;
+#endif
+extern "C" {
+#ifndef NEON_NOINCLUDE
+	unsigned char* NeonColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { unsigned char* foo = (unsigned char*)malloc(4); foo[0] = r; foo[1] = g; foo[2] = b; foo[3] = a; return foo; }
+#endif
+#else
 #define NeonColor(r, g, b, a) (unsigned char []){r, g, b, a}
+#endif
 
 // Draw instruction IDs
 // 1 - Rectangle
@@ -22,19 +33,19 @@
 // 3 - Polygon
 
 typedef struct {
-    unsigned int ID;
-    
+	unsigned int ID;
+
 	union {
 		struct {
 			int x, y, width, height;
 			unsigned char color[4];
 		} RectParameters;
-		
+
 		struct {
 			int x, y, width, height;
 			unsigned long id;
 		} ImageParameters;
-		
+
 		struct {
 			unsigned int vertices;
 			int* x;
@@ -47,7 +58,7 @@ typedef struct {
 // Rendering
 /// Used to render.
 typedef struct {
-    unsigned long InstructionCount;
+	unsigned long InstructionCount;
 	NeonDrawInstruction* Instructions;
 } NeonDraw;
 
@@ -63,7 +74,7 @@ void NeonAddImageRaw(unsigned char* bytes, unsigned long len);
 /// Adds an image to a draw
 void NeonDrawImage(NeonDraw* draw, int x, int y, int width, int height, unsigned long ID);
 
-/// Adds a polygon to a draw
+/// Adds a polygon to a draw (OSX only)
 void NeonDrawPolygon(NeonDraw* draw, unsigned char color[4], unsigned int verticies, ...);
 // /Rendering
 
@@ -108,4 +119,9 @@ void NeonChangeName(char* name);
 /// Change the window resolution during execution
 void NeonChangeResolution(int width, int height);
 // /OS
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* Neon_h */
