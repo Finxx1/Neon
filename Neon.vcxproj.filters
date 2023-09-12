@@ -18,10 +18,7 @@
     <ClCompile Include="src\Neon.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Example\main.cxx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\windows\WinNeon.c">
+    <ClCompile Include="src\windows\WinNeon.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,26 +26,10 @@
     <ClInclude Include="include\Neon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\stb_image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GL\eglew.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GL\glew.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GL\glxew.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GL\wglew.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\asprintf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
+    <None Include="x64\Debug\weapons.gon" />
+    <None Include="x64\Release\weapons.gon" />
   </ItemGroup>
 </Project>

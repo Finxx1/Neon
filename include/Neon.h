@@ -11,14 +11,16 @@
 // if someone has their own calloc for garbage collection or something, just define this macro
 #ifndef NEON_NOINCLUDE
 #include <stdlib.h>
+#ifdef __cplusplus
+#define NeonCreateDraw() (NeonDraw*)calloc(1, sizeof(NeonDraw))
+#else
 #define NeonCreateDraw() calloc(1, sizeof(NeonDraw))
+#endif
 #endif
 
 // c++ is weird
 #ifdef __cplusplus
-#ifndef _WIN32
 typedef bool _Bool;
-#endif
 extern "C" {
 #ifndef NEON_NOINCLUDE
 	static inline unsigned char* NeonColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { unsigned char* foo = (unsigned char*)malloc(4); foo[0] = r; foo[1] = g; foo[2] = b; foo[3] = a; return foo; }
@@ -31,7 +33,6 @@ extern "C" {
 // 1 - Rectangle
 // 2 - Image
 // 3 - Polygon
-
 typedef struct {
 	unsigned int ID;
 

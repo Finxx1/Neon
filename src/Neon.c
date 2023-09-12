@@ -27,7 +27,7 @@ void NeonDrawRect(NeonDraw* draw, int x, int y, int width, int height, unsigned 
     draw->Instructions[draw->InstructionCount - 1].RectParameters.color[3] = color[3];
 }
 
-void NeonDrawImage(NeonDraw* draw, int x, int y, int width, int height, size_t ID) {
+void NeonDrawImage(NeonDraw* draw, int x, int y, int width, int height, unsigned long ID) {
     draw->InstructionCount++;
     draw->Instructions = realloc(draw->Instructions, sizeof(NeonDrawInstruction) * draw->InstructionCount);
     

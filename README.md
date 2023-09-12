@@ -22,3 +22,7 @@ int main(int argc, const char * argv[]) {
 	return 0;
 }
 ```
+### 3rd party libraries
+Neon uses third party libraries in cases where not using them hinders development. As of now, it uses these:
+### STB_IMAGE
+STB_IMAGE is used for reading image data across several formats. STB_IMAGE is licensed under the CC0 public-domain license.
