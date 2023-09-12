@@ -119,7 +119,7 @@ LRESULT WINAPI WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
 				NeonDrawInstruction foo = draw->Instructions[i];
 				switch (foo.ID) {
 					case 1: {
-						D2D1::ColorF color(foo.RectParameters.color[0] / 255.0, foo.RectParameters.color[1] / 255.0, foo.RectParameters.color[2] / 255.0, foo.RectParameters.color[0] / 255.0);
+						D2D1::ColorF color(foo.RectParameters.color[0] / 255.0, foo.RectParameters.color[1] / 255.0, foo.RectParameters.color[2] / 255.0, foo.RectParameters.color[3] / 255.0);
 
 						ID2D1SolidColorBrush* brush;
 						result = d2dtarget->CreateSolidColorBrush(color, &brush);
@@ -151,7 +151,7 @@ LRESULT WINAPI WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
 
 						result = sink->Close();
 
-						D2D1::ColorF color(foo.PolygonParameters.color[0] / 255.0, foo.PolygonParameters.color[1] / 255.0, foo.PolygonParameters.color[2] / 255.0, foo.PolygonParameters.color[0] / 255.0);
+						D2D1::ColorF color(foo.PolygonParameters.color[0] / 255.0, foo.PolygonParameters.color[1] / 255.0, foo.PolygonParameters.color[2] / 255.0, foo.PolygonParameters.color[3] / 255.0);
 
 						ID2D1SolidColorBrush* brush;
 						result = d2dtarget->CreateSolidColorBrush(color, &brush);
